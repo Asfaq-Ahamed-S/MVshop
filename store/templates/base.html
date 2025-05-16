@@ -1,0 +1,66 @@
+<!-- HEADER -->
+ 
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="{%static "css/style.css"%}">
+    <link rel="stylesheet" href="{%static "css/style4.css"%}">
+</head>
+<body>
+    <header>
+        <img class="logo_head"src="{%static "img/logo.jpg"%}">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="{% url "Shop:index" %}">Home</a><li>
+                <li><a href="{% url "Shop:category" %}">Category</a><li>
+                <li><a href="{% url "Shop:about" %}">About</a><li>
+            </ul>
+        </nav>
+        {% if user.is_authenticated %}
+            <a class="cta" href="{% url "Shop:logout" %}"><button>Logout</button></a>
+            <a class="cta" href="{% url "Shop:cart" %}"><button>Cart</button></a>
+        {% else %}
+            <a class="cta" href="{% url "Shop:login" %}"><button>Login</button></a>
+        {% endif %}
+
+    </header>
+    {% block content %}
+
+    {% endblock content %}
+<!-- FOOTER -->
+    <footer>
+        <div class="row">
+            <div class="col">
+                <img src="{%static "img/logo.jpg"%}" class="logo">
+                <p>Subscribe our Youtube channel and Press the bell icon to get daily updates about offers in our website. </p>
+            </div>
+            <div class="col">
+                <h3>Office <div class="underline"><span></span></div></h3>
+                <p>Main Road</p>
+                <p>Thevaram, Theni</p>
+                <p>Tamilnadu, PIN 625533, India</p>
+                <p class="email-id">mvshop321@gmail.com</p>
+                <h4>+91 - 0123456789</h4>
+            </div>
+            <div class="col">
+                <h3>Links <div class="underline"><span></span></div></h3>
+                <ul>
+                    <li><a href="{% url "Shop:index" %}">Home</a></li>
+                    <li><a href="{% url "Shop:about" %}">About us</a></li>
+                    <li><a href="/admin">Admin</a></li>
+                    <li><a href="{% url "Shop:admin_register" %}">Register</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Social <div class="underline"><span></span></div></h3>
+                <ul>
+                    <li><a href="https://m.facebook.com">Facebook</a></li>
+                    <li><a href="https://www.instagram.com">Instagram</a></li>
+                    <li><a href="https://www.youtube.com">Youtube</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">MV Shop @ 2024 - All Rights Reserverd</p>
+    </footer>
+</body>

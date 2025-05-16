@@ -1,0 +1,51 @@
+
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="{%static "css/style3.css"%}">
+</head>
+
+<div class="container">
+    {% if orders %}
+        <h1>My Orders</h1>
+        {% for order in orders %}
+            <div class="cart-total">
+                <p>
+                    <span>Order ID:</span>
+                    <span>#{{ order.id }}</span>
+                </p>
+                <p>
+                    <span>Shipping Address:</span>
+                    <span>{{order.shipping_address}}</span>
+                </p>
+                <p>
+                    <span>Payment Method:</span>
+                    <span>{{order.payment_method}}</span>
+                </p>
+                <p>
+                    <span>Order Date:</span>
+                    <span>{{order.order_date}}</span>
+                </p>
+                <p>
+                    <span>Items:</span>
+                    {% if order.cart_items.all %}
+                        {% for item in order.cart_items.all %}
+                            <span>{{item.product.name}} - {{item.quantity}} x ₹{{item.product.price}}</span>
+                        {% endfor %}
+                    {% else %}
+                        <span>No items found</span>
+                    {% endif %}
+                </p>
+                <a href="{% url "Shop:cancel_order" order_id=order.id %}" class="btn">Cancel Order</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="success-container">
+            <div class="success-message">
+                <h1>No Orders Yet!</h1>
+                <p>Make your purchase now on our MV Shop.</p>
+                <a href="{% url "Shop:index" %}" class="btn">Order Now</a>
+            </div>
+        </div>
+    {% endif %}
+</div>

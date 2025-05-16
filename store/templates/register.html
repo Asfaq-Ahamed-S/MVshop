@@ -1,0 +1,49 @@
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="{%static "css/style2.css"%}">
+    <link href="https://unpkag.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper active">
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
+
+        <div class="form-box register">
+            <h2 class="animation" style="--i:17">Sign Up</h2>
+            {%if errors %}
+                <ul>
+                    {% for error in errors %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="input-box animation" style="--i:18">
+                    <input type="text" name='username' required>
+                    <label>Username</label>
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box animation" style="--i:19">
+                    <input type="Email" name='email' required>
+                    <label>Email</label>
+                    <i class="bx bxs-envelope"></i>
+                </div>
+                <div class="input-box animation" style="--i:20">
+                    <input type="password" name='password' required>
+                    <label>Password</label>
+                    <i class="bx bxs-lock-alt"></i>
+                </div><br>
+                <button type="submit" class="btn animation" style="--i:21">Sign Up</button><br><br><br>
+                <p class="animation" style="--i:22"> Already have an account ?<a href="{% url "Shop:login" %}" class="login-link animation" style="--i:22">Login</a></p>   
+            </form>
+        </div>
+        <div class="info-text register">
+            <h2 class="animation" style="--i:17; --j:0;">Welcome<br> Back!</h2>
+            <p class="animation" style="--i:18; --j:1">Login and get<br> access to exclusive <br>offers & deals</p>
+        </div>
+    </div>
+</body>

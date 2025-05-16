@@ -1,0 +1,14 @@
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="{%static "css/style5.css"%}">
+</head>
+
+<div class="success-container">
+    <div class="success-message">
+        <img src="{% static "img/checkmark.png" %}" class="checkmark-image">
+        <h1>Thank you!</h1>
+        <p>Your order has been successfully placed. Thank you for your purchase!</p>
+        <a href="{% url "Shop:my_orders" %}" class="btn">OK</a>
+    </div>
+</div>

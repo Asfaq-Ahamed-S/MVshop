@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%load static%}
+
+{%block content%}
+    <div class="card-container">
+        {% for product in products %}
+            {% if category_id == product.category.id %}
+                <div class="card">
+                    <img src="{{product.Image.url}}">
+                    <div class="card-content">
+                        <h3>{{product.name}}</h3>
+                        <h4>₹{{product.price}}</h4>
+                        <p>{{product.content | truncatewords:7}}</p>
+                        <a href="{% url 'Shop:detail' product_id=product.id %}" class="btn">Read More</a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{%endblock%}

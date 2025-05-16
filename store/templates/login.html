@@ -1,0 +1,40 @@
+{%load static%}
+
+<head>
+    <link rel="stylesheet" href="{%static "css/style2.css"%}">
+    <link href="https://unpkag.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
+
+        <div class="form-box login">
+            <h2 class="animation" style="--i:0;">Login</h2>
+            {% if error %}
+                <p>{{error}}</p>
+            {% endif %}
+            <form action="" method='POST'>
+                {% csrf_token %}
+                <div class="input-box animation" style="--i:1;">
+                    <input type="text" name='username' required>
+                    <label>Username</label>
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box animation" style="--i:2;">
+                    <input type="password" name='password' required>
+                    <label>Password</label>
+                    <i class="bx bxs-lock-alt"></i>
+                </div><br><br>
+                <button type="submit" class="btn animation" style="--i:3;">Login</button><br><br><br>
+                <p class="animation" style="--i:4"> Dont have an account ?<a href= "{% url "Shop:register" %}" class="register-link animation" style = "--i:4">Sign Up</a></p>
+            </form>
+        </div>
+        <div class="info-text login">
+            <h2 class="animation" style="--i:0">Welcome<br>Back!</h2>
+            <p class="animation" style="--i:1">Login and get access<br>to exclusive offers<br>and deals</p>
+        </div>
+    </div>
+</body>
